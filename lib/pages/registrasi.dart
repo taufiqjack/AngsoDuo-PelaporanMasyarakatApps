@@ -1,5 +1,6 @@
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
 import 'package:angsoduo_pelaporanmasyarakat/pages/login.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/otpVerifikasi.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -85,7 +86,7 @@ class _RegistrasiState extends State<Registrasi> {
                     },
                     validator: (value) {
                       if (value.trim().isEmpty) {
-                        return 'Password tidak boleh kosong!';
+                        return 'Nomor Telepon tidak boleh kosong!';
                       }
                       return null;
                     },
@@ -93,7 +94,7 @@ class _RegistrasiState extends State<Registrasi> {
                       fillColor: Colors.white,
                       hoverColor: Colors.white,
                       focusColor: Colors.white,
-                      hintText: 'Masukkan Password',
+                      hintText: 'Masukkan Nomor Telepon',
                       border: new OutlineInputBorder(
                         borderRadius: new BorderRadius.circular(5.0),
                         borderSide: BorderSide(color: Colors.white),
@@ -135,7 +136,13 @@ class _RegistrasiState extends State<Registrasi> {
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(0.0)),
           onPressed: () {
-            _formKey.currentState.validate();
+            if (_formKey.currentState.validate()) {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => VerifikasiOTP(),
+                ),
+              );
+            }
           },
         ),
       ),
