@@ -125,7 +125,7 @@ class _LoginAppState extends State<LoginApp> {
         buttonColor: Warna.solidblue,
         child: new RaisedButton(
           child: Text(
-            'Login',
+            'LOGIN',
             style: GoogleFonts.inter(
                 textStyle: TextStyle(color: Colors.white, fontSize: 16)),
           ),

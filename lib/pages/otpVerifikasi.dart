@@ -57,7 +57,7 @@ class _VerifikasiOTPState extends State<VerifikasiOTP> {
         buttonColor: Warna.solidblue,
         child: new RaisedButton(
           child: Text(
-            'Verifikasi',
+            'VERIFIKASI',
             style: GoogleFonts.inter(
                 textStyle: TextStyle(color: Colors.white, fontSize: 16)),
           ),

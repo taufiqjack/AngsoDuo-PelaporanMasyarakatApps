@@ -129,7 +129,7 @@ class _RegistrasiState extends State<Registrasi> {
         buttonColor: Warna.solidblue,
         child: new RaisedButton(
           child: Text(
-            'Register',
+            'REGISTER',
             style: GoogleFonts.inter(
                 textStyle: TextStyle(color: Colors.white, fontSize: 16)),
           ),
