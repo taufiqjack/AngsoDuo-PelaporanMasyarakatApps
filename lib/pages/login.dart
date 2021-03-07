@@ -1,4 +1,5 @@
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/registrasi.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -104,7 +105,10 @@ class _LoginAppState extends State<LoginApp> {
                     children: [
                       Text('Belum punya akun?'),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => Registrasi()));
+                        },
                         child: Text('Daftar disini'),
                       ),
                     ],
