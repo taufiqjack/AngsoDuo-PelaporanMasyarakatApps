@@ -2,7 +2,6 @@ import 'package:angsoduo_pelaporanmasyarakat/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:format_indonesia/format_indonesia.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
