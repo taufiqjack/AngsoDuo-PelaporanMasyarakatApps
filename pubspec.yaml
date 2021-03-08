@@ -30,6 +30,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts:
   pin_code_fields:
+  format_indonesia:
+  persistent_bottom_nav_bar:
+  charts_flutter:
 
 dev_dependencies:
   flutter_test:
