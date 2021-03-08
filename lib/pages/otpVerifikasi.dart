@@ -1,4 +1,5 @@
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/loginAfterOtp.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -64,7 +65,13 @@ class _VerifikasiOTPState extends State<VerifikasiOTP> {
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(0.0)),
           onPressed: () {
-            _formKey.currentState.validate();
+            if (_formKey.currentState.validate()) {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => LoginAfterOTP(),
+                ),
+              );
+            }
           },
         ),
       ),
