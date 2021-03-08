@@ -1,4 +1,5 @@
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -149,7 +150,7 @@ class _LoginAfterOTPState extends State<LoginAfterOTP> {
             if (_formKey.currentState.validate()) {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext context) => LoginAfterOTP(),
+                  builder: (BuildContext context) => HomePage(),
                 ),
               );
             }
