@@ -75,7 +75,7 @@ class _EditProfileState extends State<EditProfile> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(20, 24, 24, 8),
+          padding: EdgeInsets.fromLTRB(20, 24, 20, 8),
           child: Form(
             key: _formKey,
             child: Column(
@@ -103,7 +103,17 @@ class _EditProfileState extends State<EditProfile> {
                 //     ),
                 //     radius: 50.0),
                 Padding(padding: EdgeInsets.all(10)),
-                TextField(
+                TextFormField(
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (v) {
+                    FocusScope.of(context).nextFocus();
+                  },
+                  validator: (value) {
+                    if (value.trim().isEmpty) {
+                      return 'Nama tidak boleh kosong!';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     hoverColor: Colors.white,
@@ -116,7 +126,17 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
-                TextField(
+                TextFormField(
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (v) {
+                    FocusScope.of(context).nextFocus();
+                  },
+                  validator: (value) {
+                    if (value.trim().isEmpty) {
+                      return 'Nomor Telp. tidak boleh kosong!';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     hoverColor: Colors.white,
@@ -129,7 +149,17 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
-                TextField(
+                TextFormField(
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (v) {
+                    FocusScope.of(context).nextFocus();
+                  },
+                  validator: (value) {
+                    if (value.trim().isEmpty) {
+                      return 'Email tidak boleh kosong!';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     hoverColor: Colors.white,
@@ -142,8 +172,18 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
-                TextField(
+                TextFormField(
                   obscureText: true,
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (v) {
+                    FocusScope.of(context).nextFocus();
+                  },
+                  validator: (value) {
+                    if (value.trim().isEmpty) {
+                      return 'Password tidak boleh kosong!';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     hoverColor: Colors.white,
@@ -155,6 +195,8 @@ class _EditProfileState extends State<EditProfile> {
                     ),
                   ),
                 ),
+                Padding(padding: EdgeInsets.all(10)),
+                Text("Klik tombol simpan di bawah untuk menyimpan\ndata"),
               ],
             ),
           ),
