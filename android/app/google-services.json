@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "497938628324",
+    "project_id": "laporanmasyarakat-a3357",
+    "storage_bucket": "laporanmasyarakat-a3357.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497938628324:android:f153e6d1684cbbc1a376f1",
+        "android_client_info": {
+          "package_name": "com.taufiqjack.angsoduo_pelaporanmasyarakat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497938628324-nbb79fp395jsff1atl1ers8aioij9h8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9IVq57ecMlNPBkjmeY6G_BshIZypC0SQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497938628324-nbb79fp395jsff1atl1ers8aioij9h8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
