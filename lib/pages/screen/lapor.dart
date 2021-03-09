@@ -31,7 +31,7 @@ class _LaporanPageState extends State<LaporanPage> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Warna.solidblue,
           ),
           onPressed: () {},
         ),
@@ -130,7 +130,7 @@ class _LaporanPageState extends State<LaporanPage> {
         buttonColor: Warna.solidblue,
         child: new RaisedButton(
           child: Text(
-            'LOGIN',
+            'LAPORKAN',
             style: GoogleFonts.inter(
                 textStyle: TextStyle(color: Colors.white, fontSize: 16)),
           ),
