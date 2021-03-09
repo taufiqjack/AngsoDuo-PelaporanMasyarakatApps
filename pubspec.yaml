@@ -34,6 +34,9 @@ dependencies:
   persistent_bottom_nav_bar:
   charts_flutter:
   image_picker:
+  firebase_auth: 
+  cloud_firestore:
+  provider: 
 
 dev_dependencies:
   flutter_test:
