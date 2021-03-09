@@ -33,6 +33,7 @@ dependencies:
   format_indonesia:
   persistent_bottom_nav_bar:
   charts_flutter:
+  image_picker:
 
 dev_dependencies:
   flutter_test:
