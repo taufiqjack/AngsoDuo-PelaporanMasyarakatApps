@@ -34,13 +34,19 @@ dependencies:
   persistent_bottom_nav_bar:
   charts_flutter:
   image_picker:
-  firebase_auth: 
-  cloud_firestore:
   provider: 
+  json_annotation:
+  intl:
+  firebase_core: 
+  modal_progress_hud:
+  firebase_auth: ^0.20.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  json_serializable:
+  json_model:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
