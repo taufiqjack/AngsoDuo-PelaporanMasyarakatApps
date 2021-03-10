@@ -17,30 +17,12 @@ class _EditProfileState extends State<EditProfile> {
 
   File _image;
   _getFromGallery() async {
-    PickedFile pickedFile = await ImagePicker().getImage(
-      source: ImageSource.gallery,
-      maxWidth: 1800,
-      maxHeight: 1800,
-    );
-    if (pickedFile != null) {
-      setState(() {
-        _image = File(pickedFile.path);
-      });
-    }
-  }
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
 
-  /// Get from Camera
-  _getFromCamera() async {
-    PickedFile pickedFile = await ImagePicker().getImage(
-      source: ImageSource.camera,
-      maxWidth: 1800,
-      maxHeight: 1800,
-    );
-    if (pickedFile != null) {
-      setState(() {
-        _image = File(pickedFile.path);
-      });
-    }
+    setState(() {
+      _image = image;
+    });
   }
 
   @override
