@@ -1,5 +1,6 @@
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
 import 'package:angsoduo_pelaporanmasyarakat/pages/loginAfterOtp.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -10,13 +11,17 @@ class VerifikasiOTP extends StatefulWidget {
   @override
   _VerifikasiOTPState createState() => _VerifikasiOTPState();
 }
+TextEditingController _otpController = TextEditingController();
 
+AuthCredential _phoneAuthCredential;
+String _verificationId;
 class _VerifikasiOTPState extends State<VerifikasiOTP> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
     var noHp = '';
     bool hasError = false;
+
 
     return Scaffold(
       body: Center(
@@ -97,6 +102,7 @@ class _VerifikasiOTPState extends State<VerifikasiOTP> {
       height: MediaQuery.of(context).size.height / 14,
       width: MediaQuery.of(context).size.width / 6,
       child: TextField(
+        controller: _otpController,
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
         textInputAction: TextInputAction.next,

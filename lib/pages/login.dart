@@ -1,7 +1,10 @@
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
 import 'package:angsoduo_pelaporanmasyarakat/pages/registrasi.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'otpVerifikasi.dart';
 
 class LoginApp extends StatefulWidget {
   LoginApp({Key key}) : super(key: key);
@@ -12,6 +15,21 @@ class LoginApp extends StatefulWidget {
 
 class _LoginAppState extends State<LoginApp> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  TextEditingController _phoneNumberController = TextEditingController();
+  TextEditingController _otpController = TextEditingController();
+  String _status;
+
+  AuthCredential _phoneAuthCredential;
+  String _verificationId;
+  int _code;
+
+  void _handleError(e) {
+    print(e.message);
+    setState(() {
+      _status += e.message + '\n';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +97,7 @@ class _LoginAppState extends State<LoginApp> {
                   ),
                   Padding(padding: EdgeInsets.all(10)),
                   TextFormField(
+                    controller: _phoneNumberController,
                     textInputAction: TextInputAction.next,
                     onFieldSubmitted: (v) {
                       FocusScope.of(context).nextFocus();
@@ -132,10 +151,57 @@ class _LoginAppState extends State<LoginApp> {
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(0.0)),
           onPressed: () {
-            _formKey.currentState.validate();
+            if (_formKey.currentState.validate()) {
+              _submitPhoneNumber();
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => VerifikasiOTP(),
+              ));
+            }
           },
         ),
       ),
     );
+  }
+
+  Future<void> _submitPhoneNumber() async {
+    /// NOTE: Either append your phone number country code or add in the code itself
+    /// Since I'm in India we use "+91 " as prefix `phoneNumber`
+    String phoneNumber = _phoneNumberController.text.toString().trim();
+    print(phoneNumber);
+
+    /// The below functions are the callbacks, separated so as to make code more readable
+    void verificationCompleted(AuthCredential phoneAuthCredential) {
+      print('verificationCompleted');
+
+      this._phoneAuthCredential = phoneAuthCredential;
+      print(phoneAuthCredential);
+    }
+
+    void verificationFailed(FirebaseAuthException error) {
+      print(error);
+    }
+
+    void codeSent(String verificationId, [int code]) {
+      print('codeSent');
+    }
+
+    void codeAutoRetrievalTimeout(String verificationId) {
+      print('codeAutoRetrievalTimeout');
+    }
+
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      timeout: Duration(milliseconds: 10000),
+      verificationCompleted: verificationCompleted,
+      verificationFailed: verificationFailed,
+      codeSent: codeSent,
+      codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
+    );
+  }
+
+  void _submitOTP() {
+    String smsCode = _otpController.text.toString().trim();
+    this._phoneAuthCredential = PhoneAuthProvider.credential(
+        verificationId: this._verificationId, smsCode: smsCode);
   }
 }
