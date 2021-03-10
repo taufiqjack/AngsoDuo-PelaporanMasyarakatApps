@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "497938628324-vdaagf1o68j14cph3rfgki7pdcckq50m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taufiqjack.angsoduo_pelaporanmasyarakat",
+            "certificate_hash": "35b767538c326eac753bb6b37d1a5dc8cb005bf4"
+          }
+        },
+        {
           "client_id": "497938628324-nbb79fp395jsff1atl1ers8aioij9h8k.apps.googleusercontent.com",
           "client_type": 3
         }
