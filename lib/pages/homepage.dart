@@ -1,3 +1,4 @@
+import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
 import 'package:angsoduo_pelaporanmasyarakat/pages/login.dart';
 import 'package:angsoduo_pelaporanmasyarakat/pages/screen/profile.dart';
 import 'package:flutter/material.dart';
@@ -81,23 +82,64 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Text("Hello World"),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0, // this will be set when a new tab is tapped
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.home),
-            title: new Text('Dashboard'),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            verticalDirection: VerticalDirection.down,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                child: IconButton(
+                  icon: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      new Icon(Icons.dashboard_outlined),
+                      new Text('Dashboard')
+                    ],
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+              Expanded(
+                child: IconButton(
+                  icon: new Text(''),
+                  onPressed: () {},
+                ),
+              ),
+              Expanded(
+                child: IconButton(
+                  icon: Column(
+                    children: [
+                      new Icon(Icons.history),
+                      new Text('Riwayat'),
+                    ],
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.mail),
-            title: new Text('Lapor'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Riwayat'),
-          )
-        ],
+        ),
       ),
+      floatingActionButton: Container(
+        height: 100,
+        width: 100,
+        child: FloatingActionButton(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/megaphone.png'),
+              Text('Lapor'),
+            ],
+          ),
+          backgroundColor: Warna.warmpink,
+          onPressed: () {},
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
