@@ -86,13 +86,12 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           height: 70,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            verticalDirection: VerticalDirection.down,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
-                child: IconButton(
-                  icon: Column(
+                child: FlatButton(
+                  child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       new Icon(Icons.dashboard_outlined),
@@ -109,8 +108,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Expanded(
-                child: IconButton(
-                  icon: Column(
+                child: FlatButton(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       new Icon(Icons.history),
                       new Text('Riwayat'),
