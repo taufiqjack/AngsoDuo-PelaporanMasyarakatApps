@@ -1,4 +1,5 @@
 import 'package:angsoduo_pelaporanmasyarakat/pages/login.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/screen/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:format_indonesia/format_indonesia.dart';
@@ -61,6 +62,11 @@ class _HomePageState extends State<HomePage> {
             ],
             onSelected: (result) {
               if (result == 0) {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => ProfilePage(),
+                  ),
+                );
               } else if (result == 1) {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
