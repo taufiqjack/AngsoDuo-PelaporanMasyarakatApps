@@ -169,7 +169,7 @@ class _RegistrasiState extends State<Registrasi> {
                 showProgress = true;
                 global.user.nik = _nikController.text;
                 global.user.noTelp = _notelpController.text;
-                detailUser();
+                // detailUser();
                 Future.delayed(Duration(seconds: 5), () {
                   Navigator.of(context).push(
                     MaterialPageRoute(

@@ -1,3 +1,4 @@
+import 'package:angsoduo_pelaporanmasyarakat/controller/signin_email.dart';
 import 'package:angsoduo_pelaporanmasyarakat/controller/user_details.dart';
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
 import 'package:angsoduo_pelaporanmasyarakat/pages/homepage.dart';
@@ -17,6 +18,7 @@ class _LoginAfterOTPState extends State<LoginAfterOTP> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   final _namaController = TextEditingController();
   final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool isAsync = false;
 
   @override
@@ -118,6 +120,7 @@ class _LoginAfterOTPState extends State<LoginAfterOTP> {
                     ),
                     Padding(padding: EdgeInsets.all(10)),
                     TextFormField(
+                      controller: _passwordController,
                       textInputAction: TextInputAction.done,
                       onFieldSubmitted: (v) {
                         FocusScope.of(context).nextFocus();
@@ -165,6 +168,7 @@ class _LoginAfterOTPState extends State<LoginAfterOTP> {
                 global.user.name = _namaController.text;
                 global.user.email = _emailController.text;
                 detailUser();
+                signUp(global.user.email, _passwordController.text);
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) => HomePage(),

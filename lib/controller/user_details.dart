@@ -1,11 +1,12 @@
+import 'package:angsoduo_pelaporanmasyarakat/controller/signin_email.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:angsoduo_pelaporanmasyarakat/models/global.dart' as global;
 
 int totalDocument;
 
-Future<int> getOrderID() async {
+Future<int> getUserID() async {
   var respectsQuery =
-      FirebaseFirestore.instance.collection('UserDetails').where("UserID");
+      FirebaseFirestore.instance.collection('User').where("UserID");
   var querySnapshot = await respectsQuery.get();
 
   totalDocument = querySnapshot.docs.length;
@@ -14,7 +15,7 @@ Future<int> getOrderID() async {
 }
 
 Future<void> detailUser() async {
-  await getOrderID();
+  await getUserID();
 
   String getId = (totalDocument + 1).toString().padLeft(2, 'ID00');
   DocumentReference documentReference =
