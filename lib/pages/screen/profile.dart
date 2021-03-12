@@ -1,5 +1,6 @@
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
 import 'package:angsoduo_pelaporanmasyarakat/pages/homepage.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/screen/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:angsoduo_pelaporanmasyarakat/models/global.dart' as global;
@@ -126,9 +127,12 @@ class _ProfilePageState extends State<ProfilePage> {
               borderRadius: new BorderRadius.circular(0.0)),
           onPressed: () {
             _formKey.currentState.validate();
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => EditProfile()));
           },
         ),
       ),
     );
   }
+  
 }
