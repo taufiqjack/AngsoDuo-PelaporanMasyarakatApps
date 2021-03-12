@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 
 class LaporanPage extends StatefulWidget {
   LaporanPage({Key key}) : super(key: key);
@@ -11,6 +15,16 @@ class LaporanPage extends StatefulWidget {
 
 class _LaporanPageState extends State<LaporanPage> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+
+  File img;
+  _getFromGallery() async {
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
+
+    setState(() {
+      img = image;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +47,10 @@ class _LaporanPageState extends State<LaporanPage> {
             Icons.arrow_back,
             color: Warna.solidblue,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (BuildContext context) => HomePage()));
+          },
         ),
         actions: [
           Icon(
@@ -76,6 +93,7 @@ class _LaporanPageState extends State<LaporanPage> {
                   ),
                   Padding(padding: EdgeInsets.all(10)),
                   TextFormField(
+                    textAlign: TextAlign.start,
                     maxLines: null,
                     keyboardType: TextInputType.multiline,
                     textInputAction: TextInputAction.done,
@@ -83,6 +101,7 @@ class _LaporanPageState extends State<LaporanPage> {
                       FocusScope.of(context).nextFocus();
                     },
                     decoration: InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(vertical: 60),
                       fillColor: Colors.white,
                       hoverColor: Colors.white,
                       focusColor: Colors.white,
@@ -99,7 +118,9 @@ class _LaporanPageState extends State<LaporanPage> {
                     height: 50,
                     minWidth: 100,
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _getFromGallery();
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
