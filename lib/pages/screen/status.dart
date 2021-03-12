@@ -1,3 +1,5 @@
+import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/screen/detail_laporan.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -56,6 +58,25 @@ class _StatusLaporanState extends State<StatusLaporan> {
               ),
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: ButtonTheme(
+        minWidth: 400,
+        height: 50,
+        buttonColor: Warna.solidblue,
+        child: new RaisedButton(
+          child: Text(
+            'LANJUTKAN',
+            style: GoogleFonts.inter(
+                textStyle: TextStyle(color: Colors.white, fontSize: 16)),
+          ),
+          shape: RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(0.0)),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => DetailLaporan(),
+            ));
+          },
         ),
       ),
     );
