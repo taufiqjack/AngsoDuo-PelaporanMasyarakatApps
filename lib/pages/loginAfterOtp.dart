@@ -167,7 +167,7 @@ class _LoginAfterOTPState extends State<LoginAfterOTP> {
                 isAsync = true;
                 global.user.name = _namaController.text;
                 global.user.email = _emailController.text;
-                detailUser();
+                // detailUser();
                 signUp(global.user.email, _passwordController.text);
                 Navigator.of(context).push(
                   MaterialPageRoute(
