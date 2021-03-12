@@ -1,6 +1,9 @@
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/homepage.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/screen/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:angsoduo_pelaporanmasyarakat/models/global.dart' as global;
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key key}) : super(key: key);
@@ -33,7 +36,13 @@ class _ProfilePageState extends State<ProfilePage> {
             Icons.arrow_back,
             color: Warna.solidblue,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (BuildContext context) => HomePage(),
+              ),
+            );
+          },
         ),
         actions: [
           Icon(
@@ -64,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
                       border: Border.all(color: Colors.grey)),
-                  child: Text("Nama saya"),
+                  child: Text("${global.user.name}"),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 Container(
@@ -75,7 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
                       border: Border.all(color: Colors.grey)),
-                  child: Text("08123456789"),
+                  child: Text("${global.user.noTelp}"),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 Container(
@@ -86,7 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
                       border: Border.all(color: Colors.grey)),
-                  child: Text("taufiqjack@gmail.com"),
+                  child: Text("${global.user.email}"),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 Container(
@@ -97,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
                       border: Border.all(color: Colors.grey)),
-                  child: Text("*****"),
+                  child: Text("****"),
                 ),
               ],
             ),
@@ -118,9 +127,12 @@ class _ProfilePageState extends State<ProfilePage> {
               borderRadius: new BorderRadius.circular(0.0)),
           onPressed: () {
             _formKey.currentState.validate();
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => EditProfile()));
           },
         ),
       ),
     );
   }
+  
 }

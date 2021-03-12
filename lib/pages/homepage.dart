@@ -1,6 +1,8 @@
-import 'package:angsoduo_pelaporanmasyarakat/pages/login.dart';
+import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/screen/dashboard.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/screen/lapor.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/screen/riwayat.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:format_indonesia/format_indonesia.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,84 +16,99 @@ class _HomePageState extends State<HomePage> {
   String listMenu;
   var waktu = Waktu();
   // PersistentTabController _controller;
-  List _menu = ['Profil', 'Logout'];
+  int _currentIndex = 0;
+  PageController _myPage = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
     // _controller = PersistentTabController(initialIndex: 0);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Center(
-          child: Column(
+      body: PageView(
+        controller: _myPage,
+        onPageChanged: (int) {},
+        children: [
+          DashboardPage(),
+          RiwayatLaporan(),
+        ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
             children: [
-              Text(
-                'LAPOR MASYARAKAT',
-                style: GoogleFonts.inter(
-                    color: Colors.black, fontWeight: FontWeight.w900),
+              Expanded(
+                child: FlatButton(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      new Icon(Icons.dashboard_outlined),
+                      new Text('Dashboard')
+                    ],
+                  ),
+                  onPressed: () {
+                    _myPage.jumpToPage(0);
+                  },
+                ),
               ),
-              Text(
-                '${waktu.yMMMMEEEEd()}',
-                style: GoogleFonts.inter(
-                    fontSize: 12,
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal),
+              Expanded(
+                child: IconButton(
+                  icon: new Text(''),
+                  onPressed: () {},
+                ),
+              ),
+              Expanded(
+                child: FlatButton(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      new Icon(Icons.history),
+                      new Text('Riwayat'),
+                    ],
+                  ),
+                  onPressed: () {
+                    _myPage.jumpToPage(1);
+                  },
+                ),
               ),
             ],
           ),
         ),
-        actions: [
-          PopupMenuButton(
-            child: Icon(
-              Icons.person,
-              color: Colors.black,
-            ),
-            itemBuilder: (_) => <PopupMenuItem>[
-              new PopupMenuItem(
-                child: Text('Profil'),
-                value: 0,
-              ),
-              new PopupMenuItem(
-                  child: Text(
-                    'Logout',
-                    style: TextStyle(color: Colors.red),
-                  ),
-                  value: 1),
+      ),
+      floatingActionButton: Container(
+        height: 100,
+        width: 100,
+        child: FloatingActionButton(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/megaphone.png'),
+              Text('Lapor'),
             ],
-            onSelected: (result) {
-              if (result == 0) {
-              } else if (result == 1) {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => LoginApp(),
-                  ),
-                );
-              }
-            },
           ),
-        ],
+          backgroundColor: Warna.warmpink,
+          onPressed: () {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (BuildContext context) => LaporanPage()));
+          },
+        ),
       ),
-      body: Center(
-        child: Text("Hello World"),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0, // this will be set when a new tab is tapped
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.home),
-            title: new Text('Dashboard'),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.mail),
-            title: new Text('Lapor'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Riwayat'),
-          )
-        ],
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
+  }
+
+  Widget _showPage = new DashboardPage();
+
+  _pageChoose(int page) {
+    switch (page) {
+      case 0:
+        return DashboardPage();
+        break;
+      case 1:
+        return RiwayatLaporan();
+        break;
+    }
   }
 }
