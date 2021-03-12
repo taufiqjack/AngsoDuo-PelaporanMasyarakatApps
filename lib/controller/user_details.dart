@@ -26,7 +26,11 @@ Future<void> detailUser() async {
     "nik": global.user.nik,
     "noTelp": global.user.noTelp,
     "name": global.user.name,
-    "email": global.user.email
+    "email": global.user.email,
+    "date": global.report.date,
+    "judul": global.report.judul,
+    "detail": global.report.detail,
+    "foto": global.report.foto,
   };
 
   documentReference.set(user).whenComplete(() {
