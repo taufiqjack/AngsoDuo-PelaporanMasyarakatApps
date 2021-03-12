@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/screen/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -46,7 +47,10 @@ class _EditProfileState extends State<EditProfile> {
             Icons.arrow_back,
             color: Warna.solidblue,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => ProfilePage()));
+          },
         ),
         actions: [
           Icon(
