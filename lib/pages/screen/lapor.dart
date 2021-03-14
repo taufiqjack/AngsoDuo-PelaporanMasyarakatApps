@@ -5,6 +5,7 @@ import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
 import 'package:angsoduo_pelaporanmasyarakat/pages/homepage.dart';
 import 'package:angsoduo_pelaporanmasyarakat/pages/screen/status.dart';
 import 'package:flutter/material.dart';
+import 'package:format_indonesia/format_indonesia.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:angsoduo_pelaporanmasyarakat/models/global.dart' as global;
@@ -21,6 +22,8 @@ class _LaporanPageState extends State<LaporanPage> {
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   bool showProgress = false;
 
+  var waktu = Waktu();
+
   File img;
   _getFromGallery() async {
     File image = await ImagePicker.pickImage(
@@ -31,7 +34,7 @@ class _LaporanPageState extends State<LaporanPage> {
     });
   }
 
-  final _dateController = TextEditingController();
+  final _dateController = Waktu();
   final _judulController = TextEditingController();
   final _detailController = TextEditingController();
   final _fotoController = TextEditingController();
@@ -183,7 +186,7 @@ class _LaporanPageState extends State<LaporanPage> {
             if (_formKey.currentState.validate()) {
               setState(() {
                 showProgress = true;
-                global.report.date = _dateController.text;
+                global.report.date = waktu.yMMMMEEEEd();
                 global.report.judul = _judulController.text;
                 global.report.detail = _detailController.text;
                 global.report.foto = _fotoController.text;
