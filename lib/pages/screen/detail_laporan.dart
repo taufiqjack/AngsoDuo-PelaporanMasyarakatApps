@@ -1,4 +1,5 @@
 import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
+import 'package:angsoduo_pelaporanmasyarakat/pages/screen/riwayat.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,7 +32,11 @@ class _DetailLaporanState extends State<DetailLaporan> {
             Icons.arrow_back,
             color: Warna.solidblue,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => RiwayatLaporan(),
+            ));
+          },
         ),
         actions: [
           Icon(
