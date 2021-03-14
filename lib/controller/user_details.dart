@@ -27,10 +27,14 @@ Future<void> detailUser() async {
     "noTelp": global.user.noTelp,
     "name": global.user.name,
     "email": global.user.email,
-    "date": global.report.date,
-    "judul": global.report.judul,
-    "detail": global.report.detail,
-    "foto": global.report.foto,
+    "reportList": [
+      {
+        "date": global.report.date,
+        "judul": global.report.judul,
+        "detail": global.report.detail,
+        "foto": global.report.foto,
+      }
+    ]
   };
 
   documentReference.set(user).whenComplete(() {
