@@ -2,6 +2,7 @@ import 'package:angsoduo_pelaporanmasyarakat/custom/warna.dart';
 import 'package:angsoduo_pelaporanmasyarakat/pages/screen/riwayat.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:angsoduo_pelaporanmasyarakat/models/global.dart' as global;
 
 class DetailLaporan extends StatefulWidget {
   DetailLaporan({Key key}) : super(key: key);
@@ -45,8 +46,44 @@ class _DetailLaporanState extends State<DetailLaporan> {
           ),
         ],
       ),
-      body: Center(
-        child: Text("halo"),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
+          child: Card(
+            child: Column(
+              children: [
+                ListTile(
+                  tileColor: Warna.greysolid,
+                  title: Row(
+                    children: [
+                      Text("hello"),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 90),
+                      ),
+                      Text(
+                        "${global.report.date}",
+                        style: GoogleFonts.inter(
+                            textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 10,
+                        )),
+                      ),
+                    ],
+                  ),
+                  subtitle: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("${global.report.judul}"),
+                      Text("${global.report.detail}"),
+                    ],
+                  ),
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
       bottomNavigationBar: ButtonTheme(
         minWidth: 400,
