@@ -127,7 +127,7 @@ class _LoginAfterOTPState extends State<LoginAfterOTP> {
                       },
                       validator: (value) {
                         if (value.trim().isEmpty) {
-                          return 'Ulangi Password tidak boleh kosong!';
+                          return 'Password tidak boleh kosong!';
                         }
                         return null;
                       },
@@ -135,7 +135,7 @@ class _LoginAfterOTPState extends State<LoginAfterOTP> {
                         fillColor: Colors.white,
                         hoverColor: Colors.white,
                         focusColor: Colors.white,
-                        hintText: 'Masukkan Kembali Password',
+                        hintText: 'Masukkan Password',
                         border: new OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0),
                           borderSide: BorderSide(color: Colors.white),
